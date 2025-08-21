@@ -413,8 +413,16 @@ def create_data_samples():
     objects_counter = dict()
     squared_positions_error = dict()
     cond = dict()
+
+    # Here is my personal modified, plz DELETE later
+    # objects = ['Horse','Jaguar','Ostrich']
+    # objects = ['Ostrich']
+    # objects.remove('Coyote')
+    # print(objects)
+    # breakpoint()
     
     for object_type in objects:
+        print(objects)
         if object_type in NO_BVHS:
             continue
         cur_counter = files_counter

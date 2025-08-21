@@ -70,14 +70,21 @@ class WandBPlatform(MLPlatform):
  
         # check if an experiment with the same id is already running
         api = wandb.Api()
-        project = kwargs.get('project', 'unnamed_project')
-        entity = kwargs.get('entity', 'unnamed_entity')
+        # 使用环境变量中的项目名称和实体名称，如果没有则使用默认值
+        project = os.getenv("WANDB_PROJECT", kwargs.get('project', 'anytop_smpl_human'))
+        entity = os.getenv("WANDB_ENTITY", kwargs.get('entity', 'lingfanb-university-college-london-ucl-'))
         config = kwargs.get('config', None)
-        runs = api.runs(path=f'{entity}/{project}')
-        for run in runs:
-            # print(run.name, run.state)
-            if run.name == self.name and run.state == 'running':
-                raise Exception(f'Experiment with name {self.name} is already running')
+        
+        try:
+            runs = api.runs(path=f'{entity}/{project}')
+            for run in runs:
+                # print(run.name, run.state)
+                if run.name == self.name and run.state == 'running':
+                    raise Exception(f'Experiment with name {self.name} is already running')
+        except Exception as e:
+            print(f"Warning: Could not check existing runs: {e}")
+            print(f"Continuing with project: {project}, entity: {entity}")
+        
         wandb.init(
             project=project,
             name=self.name,
@@ -85,7 +92,8 @@ class WandBPlatform(MLPlatform):
             resume='allow',  # in order to send continued runs to the same record
             entity=entity,
             save_code=True,
-            config=config)  # config can also be sent via report_args()
+            config=config,  # config can also be sent via report_args()
+            settings=wandb.Settings(init_timeout=300))  # increase timeout to 5 minutes
 
     def report_scalar(self, name, value, iteration, group_name=None):
         self.wandb.log({name: value}, step=iteration)

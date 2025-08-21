@@ -24,13 +24,23 @@ def main(args = None, cond_dict = None):
     if args is None:
         # args is None unless this method is called from another function (e.g. during training)
         args = generate_args()
-    fixseed(args.seed)
+    # fixseed(args.seed)
     opt = get_opt(args.device)
+    
+    # cond_dict is none
     if cond_dict is None:
         if args.cond_path:
             cond_dict=np.load(args.cond_path, allow_pickle=True).item()
+            print(f"args.cond_path: {args.cond_path}")
         else:
             cond_dict = np.load(opt.cond_file, allow_pickle=True).item()
+            print(f"cond_file: {opt.cond_file}")
+    
+    # print(f"cond_dict: {list(cond_dict.keys())}")
+    # breakpoint()
+    # Debug: Print available object types
+    print(f"Available object types in cond_dict: {list(cond_dict.keys())}")
+    print(f"Requested object types: {args.object_type}")
 
     out_path = args.output_dir
     name = os.path.basename(os.path.dirname(args.model_path))        
@@ -60,7 +70,8 @@ def main(args = None, cond_dict = None):
     model.to(dist_util.dev())
     model.eval()  # disable random masking
     _, model_kwargs = create_condition(object_types, cond_dict, n_frames, args.temporal_window, t5_conditioner=t5_conditioner, max_joints=opt.max_joints, feature_len=opt.feature_len)
-
+    # print(cond_dict)
+    # breakpoint()
 
     for rep_i in range(args.num_repetitions):
         print(f'### Sampling [repetitions #{rep_i}]')

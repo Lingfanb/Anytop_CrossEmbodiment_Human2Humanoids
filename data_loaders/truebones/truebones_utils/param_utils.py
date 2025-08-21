@@ -19,7 +19,7 @@ SNAKES = ["Anaconda", "KingCobra"]
 FLYING = ["Bat", "Dragon", "Bird", "Buzzard", "Eagle", "Giantbee", "Parrot", "Parrot2", "Pigeon", "Pteranodon", "Tukan"]
 CONNECTED_TO_GROUND = ["Bear", "Camel", "Hippopotamus", "Horse", "Pirrana", "Pteranodon", "Raptor3", "Rat", "SabreToothTiger", "Scorpion-2", "Spider", "Trex", "Tukan", "Pirrana"]
 FISH = ["Pirrana"]
-BIPEDS = ["Ostrich", "Flamingo", "Raptor", "Raptor2", "Raptor3", "Trex", "Chicken", "Tyranno"]
+BIPEDS = ["Ostrich", "Flamingo", "Raptor", "Raptor2", "Raptor3", "Trex", "Chicken", "Tyranno", "Human"]
 QUADROPEDS = ["Horse", "Hippopotamus", "Comodoa", "Camel", "Bear", "Buffalo", "Cat", "BrownBear", "Coyote", "Crocodile", "Elephant", "Deer", "Fox", "Gazelle", 
            "Goat", "Jaguar","Lynx", "Tricera", "Stego" , "SandMouse", "Raindeer", "Puppy", "PolarBear", "Monkey", "Mammoth", "Alligator", "Hamster", 
            "Hound", "Leapord", "Lion", "PolarBearB", "Rat", "Rhino", "SabreToothTiger", "Skunk", "Turtle"]
@@ -49,7 +49,7 @@ FACE_JOINTS = {"Alligator": [8, 11, 17, 20] , "Crow": [18, 21, 7, 11], "Anaconda
                "PolarBear": [3, 9, 19, 25], "PolarBearB": [3, 8, 17, 23], "Pteranodon": [16, 5, 40, 35], "Puppy": [5, 11, 20, 26], "Raindeer": [3, 9, 18, 24], "Raptor": [13, 19, 13, 19], 
                "Raptor2": [52, 40, 23, 13], "Raptor3": [53, 41, 24, 14], "Rat": [12, 15, 9, 6], "Rhino": [5, 11, 21, 27], "Roach": [2, 6, 29, 25], "SabreToothTiger": [7, 2, 37, 51], 
                "SandMouse": [7, 13, 30, 34], "Scorpion": [58, 29, 20, 25], "Scorpion-2": [55, 23, 48, 16], "Skunk": [10, 15, 28, 32], "Spider": [21, 27, 5, 9], "SpiderG": [13, 19, 27, 33],
-               "Stego": [7, 12, 27, 21], "Trex": [38, 50, 23, 15], "Tricera": [6, 11, 24, 28], "Tukan": [4, 6, 9, 11], "Turtle": [31, 40, 12, 22], "Tyranno": [7, 20, 37, 44]}
+               "Stego": [7, 12, 27, 21], "Trex": [38, 50, 23, 15], "Tricera": [6, 11, 24, 28], "Tukan": [4, 6, 9, 11], "Turtle": [31, 40, 12, 22], "Tyranno": [7, 20, 37, 44], "Human": [2, 5, 13, 18]}
 
 MAX_JOINTS=143
 FPS=20
